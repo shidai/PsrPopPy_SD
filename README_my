@@ -1,0 +1,5 @@
+./bin/populate -n 120000 -rdist yk04 -dm ne2001
+./bin/dosurvey -f populate.model -surveys PMSURV
+
+in /lib/python/survey.py, you can change detection threshold by modifying weff_ms and delta
+changed minimum Galactic longitude from -100 to -260 in /lib/surveys/PMSURV 

@@ -497,15 +497,19 @@ class Survey:
         # return the S/N accounting for beam offset
         return sig_to_noise * degfac
 
+    # Shi Dai, 2018/04/11/
     def _AA_factor(self, pulsar):
         """ Aperture array factor """
 
         # need to compute ra/dec of pulsar from the l and b (galtfeq)
         ra, dec = go.lb_to_radec(pulsar.gl, pulsar.gb)
+        
+        # Hard coded for SKA_Low
+        offset_from_zenith = dec - 26.0
+        #offset_from_zenith = dec - (self.DECmax + self.DECmin)/2.0
 
-        offset_from_zenith = dec - (self.DECmax + self.DECmin)/2.0
-
-        return math.cos(math.radians(offset_from_zenith))
+        #return math.cos(math.radians(offset_from_zenith))
+        return math.cos(math.radians(offset_from_zenith))**2
 
     def calcflux(self, psr, ref_freq):
         """Calculate the flux at this frequency"""

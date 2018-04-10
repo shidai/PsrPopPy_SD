@@ -1,0 +1,2 @@
+gcc -g  *.c -o ymw16 -lm
+gcc -shared -Wl,-install_name,ymw16lib.so -o ymw16lib.so -lm -fPIC *.c
